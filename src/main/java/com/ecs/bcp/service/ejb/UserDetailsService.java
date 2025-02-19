@@ -2178,5 +2178,10 @@ public class UserDetailsService {
 		}
 	}
 
-
+	
+	public static void demoUserMethod()
+	{
+		
+		System.out.println("New method added");
+	}
 }
