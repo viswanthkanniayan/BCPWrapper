@@ -2184,4 +2184,12 @@ public class UserDetailsService {
 		
 		System.out.println("New method added");
 	}
+	
+	
+	
+	// new method added by nithin
+	public static void method2() {
+		
+		System.out.println("new method added by nithin");
+	}
 }
