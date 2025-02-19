@@ -2124,6 +2124,59 @@ public class UserDetailsService {
 		}
 	}
 
+	
+	// new method in user service
+	public static UserResponce demoUserType(UserRequest reqXSD) throws Exception {
+
+		UserResponce responseXsd = new UserResponce();
+		long userTotalCount;
+		try {
+
+
+			long auditor = EjbLookUps.getUserDetailsRemote().userTypeCount("AUDITOR");
+			long auditee = EjbLookUps.getUserDetailsRemote().userTypeCount("AUDITEE");
+			long infoProvider = EjbLookUps.getUserDetailsRemote().userTypeCount("INFORMATION_PROVIDER");
+			
+			long setAuditorActiveUser = EjbLookUps.getUserDetailsRemote().userTypeStatusCount("AUDITOR","ACTIVE"); 
+	        long setAuditordeActiveUser = EjbLookUps.getUserDetailsRemote().userTypeStatusCount("AUDITOR","DEACTIVE"); 
+	        
+	        long setAuditeeActiveUser = EjbLookUps.getUserDetailsRemote().userTypeStatusCount("AUDITEE","ACTIVE"); 
+	        long setAuditeeDeActiveUser = EjbLookUps.getUserDetailsRemote().userTypeStatusCount("AUDITEE","DEACTIVE"); 
+	        
+	        long setInfoActiveUser = EjbLookUps.getUserDetailsRemote().userTypeStatusCount("INFORMATION_PROVIDER","ACTIVE"); 
+	        long setInfoDeactiveUser = EjbLookUps.getUserDetailsRemote().userTypeStatusCount("INFORMATION_PROVIDER","DEACTIVE"); 
+	        
+	        userTotalCount =  setAuditorActiveUser + setAuditordeActiveUser+setAuditeeActiveUser+setAuditeeDeActiveUser+setInfoActiveUser+setInfoDeactiveUser;
+			
+			System.out.println("auditor-----------------------------"+auditor);
+			System.out.println("auditee-----------------------------"+auditee);
+			System.out.println("infoProvider-----------------------------"+infoProvider);
+
+			responseXsd = new UserResponce();
+			responseXsd.setError(false);
+			responseXsd.setAuditorCount(auditor);
+			responseXsd.setAuditeeCount(auditee);
+			responseXsd.setInfoProvider(infoProvider);
+			responseXsd.setAuditorActiveUser(setAuditorActiveUser);
+		    responseXsd.setAuditordeActiveUser(setAuditordeActiveUser);
+		    responseXsd.setAuditeeActiveUser(setAuditeeActiveUser);
+		    responseXsd.setAuditeeDeActiveUser(setAuditeeDeActiveUser);
+		    responseXsd.setInfoActiveUser(setInfoActiveUser);
+		    responseXsd.setInfoDeActiveUser(setInfoDeactiveUser);
+		    responseXsd.setTotalUserCount(userTotalCount);
+			return responseXsd;
+
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			responseXsd = new UserResponce();
+			responseXsd.setError(true);
+			responseXsd.setErrorCode(Constants.ECSV0001);
+			responseXsd.setErrorDescription(ErrorMessage.getErrorMessage(Constants.ECSV0001));
+			return responseXsd;
+		}
+	}
 
 
 }
