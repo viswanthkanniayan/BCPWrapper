@@ -2194,4 +2194,16 @@ public class UserDetailsService {
 		
 		// pused to master branch
 	}
+	
+	
+	// date - 20-02 added by nihtin
+	public static void method20(){
+		
+		// new method added
+		
+		System.out.println("method - 20-02 by nithin");  
+	//20
+		
+	}
+	
 }
