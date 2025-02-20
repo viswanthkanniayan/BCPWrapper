@@ -2206,4 +2206,13 @@ public class UserDetailsService {
 		
 	}
 	
+	
+	//method by hari
+	public static void userNewMethod() {
+		
+		// added by hari - 20/02/2025
+		
+		System.out.println("first commit by hari");
+	}
+	
 }
